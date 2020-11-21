@@ -1,6 +1,8 @@
 drop table RESPONSABLES;
-drop table CLUBS;
 drop table EQUIPES;
+drop table CLUBS;
+drop table PARTICIPER;
+drop table SAISON;
 
 
 -- ============================================================
@@ -42,6 +44,46 @@ create table EQUIPES
     NUMERO_CLUB                      int(10)                 not null,
     constraint pk_equipe primary key (NUMERO_EQUIPE)
 );
+
+
+-- ============================================================
+--   Table : PARTICIPER                           
+-- ============================================================
+create table PARTICIPER
+(
+    NOMBRE_POINTS_MARQUES                    int(2)                            not null,
+    NOMBRE_FAUTES_COMMISES                   int(5)                            not null 
+    
+);--,  FOREIGN KEY (NUMERO_RENCONTRE) REFERENCES RENCONTRES(NUMERO_DE_RENCONTRE)           ,
+    --FOREIGN KEY (NUMERO_DE_LICENSE) REFERENCES JOUEURS(NUMERO_DE_LICENCE)               ,
+    --constraint pk_participer primary key (NUMERO_RENCONTRE,NUMERO_DE_LICENSE)
+
+
+-- ============================================================
+--   Table : SAISON                           
+-- ============================================================
+create table SAISON
+(
+    NUMERO_SAISON                     int(20)               not null AUTO_INCREMENT, 
+    DATE_DE_DEBUT                     date                  not null,
+    constraint pk_saison primary key (NUMERO_SAISON)
+);-- autoincrement num_saison ?
+
+
+-- ============================================================
+--   Table : SAISON_JOUEE                           
+-- ============================================================
+/*
+create table SAISON_JOUEE
+(
+    FOREIGN KEY (NUMERO_SAISON) REFERENCES SAISON(NUMERO_SAISON)        ,          
+    FOREIGN KEY (NUM_LICENSE)   REFERENCES JOUEURS(NUMERO_DE_LICENCE)   ,
+    constraint pk_saison_jouee primary key (NUMERO_SAISON,NUM_LICENSE)
+);       
+    
+*/
+
+
 
 alter table RESPONSABLES 
     add constraint fk_responsable foreign key (NUMERO_CLUB) -- constraint for the foreign key

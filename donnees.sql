@@ -5,6 +5,9 @@
 delete from RESPONSABLES;
 delete from EQUIPES;
 delete from CLUBS;
+delete from PARTICIPER;
+delete from SAISON;
+
 -- adding other deletes
 commit;
 
@@ -43,3 +46,42 @@ insert into EQUIPES values (4   ,   'BARCELONA 2'   ,   'JUNIOR'    ,    1    , 
 insert into EQUIPES values (1   ,   'REAL MADRID 1'   ,   'SEINIOR'    ,    1    ,   1);
 
 commit;
+
+
+
+--PARTICIPER
+start transaction;
+insert into PARTICIPER values (1    ,   3);
+insert into PARTICIPER values (2    ,   1);
+
+commit;
+
+
+
+--SAISON
+start transaction;
+insert into SAISON (DATE_DE_DEBUT) values ('2015-01-01'),
+('2016-01-01'),
+('2017-01-01'),
+('2018-01-01'),
+('2019-01-01'),
+('2020-01-01');
+
+commit;
+
+
+
+-- ============================================================
+--    verification des donnees
+-- ============================================================
+
+select count(*),'= 2 ?','CLUBS' from CLUBS 
+union
+select count(*),'= 4 ?','RESPONSABLES' from RESPONSABLES 
+union
+select count(*),'= 4 ?','EQUIPES' from EQUIPES
+union
+select count(*),'= 2 ?','PARTICIPER' from PARTICIPER 
+union
+select count(*),'= 6 ?','SAISON' from SAISON  ; 
+
