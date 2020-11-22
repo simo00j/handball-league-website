@@ -6,14 +6,10 @@ delete from RESPONSABLES;
 delete from EQUIPES;
 delete from CLUBS;
 delete from PARTICIPER;
-delete from SAISON;
+delete from SAISONS;
 
 -- adding other deletes
 commit;
-
-
-
-
 
 
 
@@ -49,18 +45,14 @@ commit;
 
 
 
---PARTICIPER
-start transaction;
-insert into PARTICIPER values (1    ,   3);
-insert into PARTICIPER values (2    ,   1);
 
 commit;
 
 
 
---SAISON
+--SAISONS
 start transaction;
-insert into SAISON (DATE_DE_DEBUT) values ('2015-01-01'),
+insert into SAISONS (DATE_DE_DEBUT) values ('2015-01-01'),
 ('2016-01-01'),
 ('2017-01-01'),
 ('2018-01-01'),
@@ -81,7 +73,5 @@ select count(*),'= 4 ?','RESPONSABLES' from RESPONSABLES
 union
 select count(*),'= 4 ?','EQUIPES' from EQUIPES
 union
-select count(*),'= 2 ?','PARTICIPER' from PARTICIPER 
-union
-select count(*),'= 6 ?','SAISON' from SAISON  ; 
+select count(*),'= 6 ?','SAISONS' from SAISONS  ; 
 
