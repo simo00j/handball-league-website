@@ -89,7 +89,7 @@ create table if not exists EQUIPES
 drop table if exists SAISONS;
 create table if not exists SAISONS
 (
-    NUMERO_SAISON                       int(20)                   not null AUTO_INCREMENT, 
+    NUMERO_SAISON                       int(20)                   not null, 
     DATE_DE_DEBUT                       date                      not null,
     constraint pk_saisons primary key (NUMERO_SAISON) -- contrainte pour la clé primaire
 );
@@ -143,7 +143,7 @@ create table if not exists PARTICIPER
 drop table if exists SAISONS_JOUEES;
 create table if not exists SAISONS_JOUEES
 (
-    NUMERO_SAISON                       int(20)                   not null auto_increment,          
+    NUMERO_SAISON                       int(20)                   not null,          
     NUMERO_DE_LICENCE                   int                     not null,
     constraint pk_saisons_jouees primary key (NUMERO_SAISON, NUMERO_DE_LICENCE)
 );       

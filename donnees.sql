@@ -4,21 +4,30 @@
 
 
 
-truncate table RENCONTRES; 
-truncate table EQUIPES;
-truncate table PARTICIPER;
-truncate table CLUBS; 
-truncate table JOUEURS; 
-truncate table RESPONSABLES; 
-truncate table COMMENCER_A_JOUER;
-truncate table COMMENCER_A_ENTRAINER; 
-truncate table ENTRAINEURS;    
-truncate table DATES_ENTREE;                     
-truncate table SAISONS;             
-truncate table SAISONS_JOUEES; 
-
--- adding other deletes
+delete from RENCONTRES;
+commit; 
+delete from EQUIPES;
 commit;
+delete from PARTICIPER;
+commit;
+delete from CLUBS;
+commit; 
+delete from JOUEURS;
+commit; 
+delete from RESPONSABLES;
+commit; 
+delete from COMMENCER_A_JOUER;
+commit;
+delete from COMMENCER_A_ENTRAINER;
+commit; 
+delete from ENTRAINEURS;
+commit;    
+delete from DATES_ENTREE;
+commit;                     
+delete from SAISONS;
+commit;             
+delete from SAISONS_JOUEES;
+commit; 
 
 
 
@@ -93,13 +102,13 @@ commit;
 
 
 start transaction;
-insert into SAISONS (DATE_DE_DEBUT) values
-('2017-01-01'),
-('2018-01-01'),
-('2019-01-01'),
-('2020-01-01');
+insert into SAISONS values (1   ,   '2017-01-01');
+insert into SAISONS values (2   ,   '2018-01-01');
+insert into SAISONS values (3   ,   '2019-01-01');
+insert into SAISONS values (4   ,   '2020-01-01');
 
 commit;
+
 
 
 
@@ -116,7 +125,6 @@ insert into DATES_ENTREE values ('2017-01-17');
 insert into DATES_ENTREE values ('2018-02-22');
 insert into DATES_ENTREE values ('2017-03-12');
 insert into DATES_ENTREE values ('2018-03-21');
-
 
 
 start transaction;
@@ -138,7 +146,6 @@ insert into COMMENCER_A_JOUER values (13123    ,   '2019-02-22'   , 4);
 insert into COMMENCER_A_JOUER values (13112    ,   '2017-01-17'   , 4);
 
 commit;
-
 
 start transaction;
 insert into COMMENCER_A_ENTRAINER values (1    ,   '2017-12-31'   , 1);
