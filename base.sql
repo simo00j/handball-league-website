@@ -72,11 +72,13 @@ create table if not exists CLUBS
 drop table if exists EQUIPES;
 create table if not exists EQUIPES
 (
-    NUMERO_EQUIPE                       int(10)                 not null,
+    NUMERO_EQUIPE                      int(10)                 not null,
     NOM_EQUIPE                          varchar(30)             not null,
     CATEGORIE                           varchar(20)             not null,
     ORDRE_DANS_CATEGORIE                int(2)                          ,
-    NUMERO_CLUB                         int(10)                 not null,
+    NUMERO_CLUB                        int(10)                 not null,
+    
+    
     constraint pk_equipes primary key (NUMERO_EQUIPE) -- contrainte pour la clé primaire
 );
 
@@ -103,6 +105,8 @@ create table if not exists RENCONTRES
   DATE_DE_RENCONTRE                     date                    not null,
   SCORE_EQUIPE_ACCUEILLANTE             int                     not null,
   SCORE_EQUIPE_RECU                     int                     not null,
+  NUMERO_EQUIPE_ACCUEILLANTE            int(10)                 not null,
+  NUMERO_EQUIPE_RECUE                     int(10)                 not null,
   constraint pk_rencontres primary key (NUMERO_DE_RENCONTRE) -- contrainte pour la clé primaire
 );
 
@@ -139,7 +143,7 @@ create table if not exists PARTICIPER
 drop table if exists SAISONS_JOUEES;
 create table if not exists SAISONS_JOUEES
 (
-    NUMERO_SAISON                       int(20)                   not null AUTO_INCREMENT,          
+    NUMERO_SAISON                       int(20)                   not null auto_increment,          
     NUMERO_DE_LICENCE                   int                     not null,
     constraint pk_saisons_jouees primary key (NUMERO_SAISON, NUMERO_DE_LICENCE)
 );       
@@ -164,8 +168,8 @@ create table if not exists COMMENCER_A_JOUER
 drop table if exists COMMENCER_A_ENTRAINER;
 create table if not exists COMMENCER_A_ENTRAINER
 (
-    NUMERO_ENTRAINEUR                   int(10)                       not null,
-    DATE_ENTREE                                    date                         not null,
+    NUMERO_ENTRAINEUR                   int(10)                    not null,
+    DATE_ENTREE                          date                      not null,
     NUMERO_EQUIPE                             int(10)	           not null,
     constraint pk_commencer_a_entrainer primary key (NUMERO_ENTRAINEUR, DATE_ENTREE, NUMERO_EQUIPE) -- constraint for the primary key
 );
@@ -179,61 +183,64 @@ create table if not exists COMMENCER_A_ENTRAINER
 alter table RESPONSABLES 
     add constraint fk_club foreign key (NUMERO_CLUB) -- constraint for the foreign key
         references CLUBS (NUMERO_CLUB)
-        on delete RESTRICT
-        on update CASCADE ; 
+        on delete cascade; 
 
 alter table EQUIPES 
     add constraint fk_equipe foreign key (NUMERO_CLUB) -- constraint for the foreign key
         references CLUBS (NUMERO_CLUB)
-        on delete RESTRICT
-        on update CASCADE ;
+        on delete cascade;
+        
+alter table RENCONTRES 
+    add constraint fk_equipe1 foreign key (NUMERO_EQUIPE_ACCUEILLANTE) -- constraint for the foreign key
+        references EQUIPES (NUMERO_EQUIPE)
+        on delete CASCADE,
+
+    add constraint fk_equipe2 foreign key (NUMERO_EQUIPE_RECUE) -- constraint for the foreign key
+        references EQUIPES (NUMERO_EQUIPE)
+        on delete cascade;
 
 
 alter table SAISONS_JOUEES
     add constraint fk_saisons_jouee1 foreign key (NUMERO_DE_LICENCE) -- constraint for the foreign key
         references JOUEURS (NUMERO_DE_LICENCE)
-        on delete RESTRICT
-        on update CASCADE,
+        on delete cascade,
+
     add constraint fk_saisons_jouee2 foreign key  (NUMERO_SAISON) -- constraint for the foreign key
         references SAISONS (NUMERO_SAISON)
-        on delete RESTRICT
-        on update CASCADE ;
+        on delete cascade;
 
 
 alter table COMMENCER_A_JOUER
     add constraint fk_commencer_a_jouer1 foreign key (NUMERO_DE_LICENCE) -- constraint for the foreign key
         references JOUEURS (NUMERO_DE_LICENCE)
-        on delete RESTRICT
-        on update CASCADE,
+        on delete cascade,
+
     add constraint fk_commencer_a_jouer2 foreign key  (DATE_ENTREE) -- constraint for the foreign key
         references DATES_ENTREE (DATE_ENTREE)
-        on delete RESTRICT
-        on update CASCADE,
+        on delete cascade,
+
     add constraint fk_commencer_a_jouer3 foreign key  (NUMERO_EQUIPE) -- constraint for the foreign key
         references EQUIPES (NUMERO_EQUIPE)
-        on delete RESTRICT
-        on update CASCADE ;
+        on delete cascade;
 
 alter table COMMENCER_A_ENTRAINER
     add constraint fk_commencer_a_entrainer foreign key (NUMERO_ENTRAINEUR)  -- constraint for the foreign key
         references ENTRAINEURS (NUMERO_ENTRAINEUR)
-        on delete RESTRICT
-        on update CASCADE,
+        on delete cascade,
+
     add constraint fk_commencer_a_entrainer2 foreign key (DATE_ENTREE) -- constraint for the foreign key
         references DATES_ENTREE (DATE_ENTREE)
-        on delete RESTRICT
-        on update CASCADE,
+        on delete cascade,
+
     add constraint  fk_commencer_a_entrainer3  foreign key (NUMERO_EQUIPE) -- constraint for the foreign key
         references  EQUIPES (NUMERO_EQUIPE)
-        on delete RESTRICT
-        on update CASCADE ;
+        on delete cascade;
 
 alter table PARTICIPER
     add constraint fk_participer1 foreign key (NUMERO_DE_LICENCE) -- constraint for the foreign key
         references JOUEURS (NUMERO_DE_LICENCE)
-        on delete RESTRICT
-        on update CASCADE,
+        on delete cascade,
+
     add constraint fk_participer2 foreign key  (NUMERO_DE_RENCONTRE) -- constraint for the foreign key
         references RENCONTRES (NUMERO_DE_RENCONTRE)
-        on delete RESTRICT
-        on update CASCADE ;
+        on delete cascade;
