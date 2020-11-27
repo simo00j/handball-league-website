@@ -104,7 +104,7 @@ create table if not exists RENCONTRES
   NUMERO_DE_RENCONTRE                   int                     not null,
   DATE_DE_RENCONTRE                     date                    not null,
   SCORE_EQUIPE_ACCUEILLANTE             int                     not null,
-  SCORE_EQUIPE_RECU                     int                     not null,
+  SCORE_EQUIPE_RECUE                     int                     not null,
   NUMERO_EQUIPE_ACCUEILLANTE            int(10)                 not null,
   NUMERO_EQUIPE_RECUE                     int(10)                 not null,
   constraint pk_rencontres primary key (NUMERO_DE_RENCONTRE) -- contrainte pour la clé primaire
