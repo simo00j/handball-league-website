@@ -276,5 +276,21 @@ select count(*),'= 4 ?','RESPONSABLES' from RESPONSABLES
 union
 select count(*),'= 4 ?','EQUIPES' from EQUIPES
 union
-select count(*),'= 6 ?','SAISONS' from SAISONS  ; 
+select count(*),'= 4 ?','ENTRAINEURS' from ENTRAINEURS
+union
+select count(*),'= 16 ?','JOUEURS' from JOUEURS
+union
+select count(*),'= 4 ?','RENCONTRES' from RENCONTRES
+union
+select count(*),'= 12 ?','DATES_ENTREE' from DATES_ENTREE
+union
+select count(*),'= 16 ?','COMMENCER_A_JOUER' from COMMENCER_A_JOUER
+union
+select count(*),'= 4 ?','COMMENCER_A_ENTRAINER' from COMMENCER_A_ENTRAINER
+union
+select count(*),'= 64 ?','SAISONS_JOUEES' from SAISONS_JOUEES
+union
+select count(*),'= 32 ?','PARTICIPER' from PARTICIPER
+union
+select count(*),'= 4 ?','SAISONS' from SAISONS  ; 
 
