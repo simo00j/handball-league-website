@@ -96,6 +96,7 @@ insert into RENCONTRES values (1   ,   '2017-12-31'   ,   34    ,    30    ,   1
 insert into RENCONTRES values (2   ,   '2018-01-15'   ,   32    ,    28    ,   3   ,   1);
 insert into RENCONTRES values (3   ,   '2017-04-17'   ,   35    ,    36    ,   2   ,   4);
 insert into RENCONTRES values (4   ,   '2018-02-22'   ,   40    ,    42    ,   4   ,   2);
+insert into RENCONTRES values (5   ,   '2018-02-22'   ,   3    ,    2    ,   4   ,   2);
 
 commit;
 
@@ -280,7 +281,7 @@ select count(*),'= 4 ?','ENTRAINEURS' from ENTRAINEURS
 union
 select count(*),'= 16 ?','JOUEURS' from JOUEURS
 union
-select count(*),'= 4 ?','RENCONTRES' from RENCONTRES
+select count(*),'= 5 ?','RENCONTRES' from RENCONTRES
 union
 select count(*),'= 12 ?','DATES_ENTREE' from DATES_ENTREE
 union
