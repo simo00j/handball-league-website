@@ -92,11 +92,11 @@ commit;
 
 
 start transaction;
-insert into RENCONTRES values (1   ,   '2017-12-31'   ,   34    ,    30    ,   1   ,   3);
-insert into RENCONTRES values (2   ,   '2018-01-15'   ,   32    ,    28    ,   3   ,   1);
-insert into RENCONTRES values (3   ,   '2017-04-17'   ,   35    ,    36    ,   2   ,   4);
-insert into RENCONTRES values (4   ,   '2018-02-22'   ,   40    ,    42    ,   4   ,   2);
-insert into RENCONTRES values (5   ,   '2018-02-22'   ,   3    ,    2    ,   4   ,   2);
+insert into RENCONTRES values (1   ,   '2017-12-31'   ,   34    ,    30    ,   1   ,   1   ,   3);
+insert into RENCONTRES values (2   ,   '2018-01-15'   ,   32    ,    28    ,   2   ,   3   ,   1);
+insert into RENCONTRES values (3   ,   '2017-04-17'   ,   35    ,    36    ,   1   ,   2   ,   4);
+insert into RENCONTRES values (4   ,   '2018-02-22'   ,   40    ,    42    ,   2   ,   4   ,   2);
+insert into RENCONTRES values (5   ,   '2018-02-22'   ,    3    ,     2    ,   2   ,   4   ,   2);
 
 commit;
 

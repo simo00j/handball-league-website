@@ -104,9 +104,10 @@ create table if not exists RENCONTRES
   NUMERO_DE_RENCONTRE                   int                     not null,
   DATE_DE_RENCONTRE                     date                    not null,
   SCORE_EQUIPE_ACCUEILLANTE             int                     not null,
-  SCORE_EQUIPE_RECUE                     int                     not null,
+  SCORE_EQUIPE_RECUE                    int                     not null,
+  ID_SAISON                             int(20)                 not null,
   NUMERO_EQUIPE_ACCUEILLANTE            int(10)                 not null,
-  NUMERO_EQUIPE_RECUE                     int(10)                 not null,
+  NUMERO_EQUIPE_RECUE                   int(10)                 not null,
   constraint pk_rencontres primary key (NUMERO_DE_RENCONTRE) -- contrainte pour la clé primaire
 );
 
@@ -191,11 +192,15 @@ alter table EQUIPES
         on delete cascade;
         
 alter table RENCONTRES 
-    add constraint fk_equipe1 foreign key (NUMERO_EQUIPE_ACCUEILLANTE) -- constraint for the foreign key
+    add constraint fk_rencontre1 foreign key (ID_SAISON) -- constraint for the foreign key
+        references SAISONS (NUMERO_SAISON)
+        on delete cascade;
+
+    add constraint fk_rencontre2 foreign key (NUMERO_EQUIPE_ACCUEILLANTE) -- constraint for the foreign key
         references EQUIPES (NUMERO_EQUIPE)
         on delete CASCADE,
 
-    add constraint fk_equipe2 foreign key (NUMERO_EQUIPE_RECUE) -- constraint for the foreign key
+    add constraint fk_rencontre3 foreign key (NUMERO_EQUIPE_RECUE) -- constraint for the foreign key
         references EQUIPES (NUMERO_EQUIPE)
         on delete cascade;
 
