@@ -190,15 +190,16 @@ select TAB.NUM_EQUIPE,E.NOM_EQUIPE,SUM(TAB.W) as W,SUM(TAB.L) as L,SUM(TAB.N) as
 //////////// AJOUT JOUEUR 
 
 insert into JOUEURS values (13732  ,   'HAMID'    ,   'TIRACHRACH'   ,   '1990-08-07'    ,    'HAMID3@GMAIL.COM' ,   0630797500);
-
+commit;
 /////////// SUPRESSION D'UN JOUEUR
 
 delete from JOUEURS where NOM_JOUEUR = 'HAMID';
-
+commit;
 /////////// MODIFICATION
 
 update JOUEURS set TELEPHONE_JOUEUR = 630071080 where NUMERO_DE_LICENCE = 10424;
-
+commit;
 update CLUBS set NOM_CLUB = 'INTER MILAN' where NOM_CLUB = 'BARCELONA';
-
+commit;
 update RENCONTRES set SCORE_EQUIPE_ACCUEILLANTE = 36 where NUMERO_DE_RENCONTRE = 1;
+commit;
